@@ -1,7 +1,7 @@
 {
   "name": "angular-slides",
   "version": "1.1.0",
-  "description": "AngularJS directive for vertical, fullscreen, slide-based web pages.", 
+  "description": "AngularJS directive for vertical, fullscreen, slide-based web pages for test.", 
   "repository": {
     "type": "git",
     "url": "https://github.com/marcoliceti/angular-slides.git"
