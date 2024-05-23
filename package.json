@@ -11,7 +11,7 @@
   "keywords": [ "angular", "slides", "scroll", "fullscreen" ],
   "homepage": "https://marcoliceti.github.io/angular-slides",
   "devDependencies": {
-    "angular-mocks": "^1.5.5",
+    "angular-mocks": "^1.5.6",
     "grunt": "^1.0.1",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-uglify": "^1.0.1",
