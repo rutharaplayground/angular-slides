@@ -12,7 +12,7 @@ env:
   JIRA_USER_EMAIL: karthiksksamy@gmail.com
   JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
   JIRA_PROJECT: KAN
-  JIRA_ISSUE_TYPE: Story
+  JIRA_ISSUE_TYPE: Task
 
 jobs:
   create_jira:
