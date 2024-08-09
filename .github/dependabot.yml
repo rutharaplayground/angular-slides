@@ -3,21 +3,50 @@
 # Please see the documentation for all configuration options:
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
+# version: 2
+# updates:
+#   # Security only daily
+#   - package-ecosystem: "npm" # See documentation for possible values
+#     directory: "/" # Location of package manifests
+#     schedule:
+#       interval: "daily"
+#     open-pull-requests-limit: 0
+#     reviewers:
+#       - "karthiksksamy@gmail.com"
+
+#   # All packages weekly
+#   - package-ecosystem: "npm"
+#     directory: "/"
+#     schedule:
+#       interval: "weekly"
+#     reviewers:
+#       - "karthiksksamy@gmail.com"
+
 version: 2
 updates:
-  # Security only daily
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  # Minor updates to npm production dependencies daily
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
       interval: "daily"
-    open-pull-requests-limit: 0
-    reviewers:
-      - "karthiksksamy@gmail.com"
+      time: "06:45"
+      timezone: "Europe/Helsinki"
+    versioning-strategy: lockfile-only
+    labels:
+      - "npm minor dependencies"
+    allow:
+      - dependency-type: "production"
 
-  # All packages weekly
+  # Major updates to npm dependencies weekly @tuesday
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "weekly"
+      day: "tuesday"
+      time: "07:00"
+      timezone: "Europe/Helsinki"
+    versioning-strategy: increase-if-necessary
+    labels:
+      - "npm major dependencies"
     reviewers:
-      - "karthiksksamy@gmail.com"
+      - "foobar/js-lead"
