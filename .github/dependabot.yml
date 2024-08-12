@@ -9,5 +9,14 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    groups:
+      version-updates:
+        applies-to: version-updates
+        patterns:
+        - "*"
+      # minor-and-patch:
+      #   applies-to: security-updates
+      #   patterns:
+      #   - "*"
     reviewers:
       - "karthiksksamy@gmail.com"
