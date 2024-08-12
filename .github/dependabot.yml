@@ -3,11 +3,42 @@
 # Please see the documentation for all configuration options:
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
+# version: 2
+# updates:
+#   # Security only daily
+#   - package-ecosystem: "npm" # See documentation for possible values
+#     directory: "/" # Location of package manifests
+#     schedule:
+#       interval: "daily"
+#     open-pull-requests-limit: 0
+#     reviewers:
+#       - "karthiksksamy@gmail.com"
+
+#   # All packages weekly
+#   - package-ecosystem: "npm"
+#     directory: "/"
+#     schedule:
+#       interval: "weekly"
+#     reviewers:
+#       - "karthiksksamy@gmail.com"
+
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    allow:
+      depedency-name: org.something:something-for-backend
+    labels:
+      - "dependencies"
+      - "automatic-merge"
+
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
       interval: "weekly"
-    reviewers:
-      - "karthiksksamy@gmail.com"
+    ignore:
+      dependency-name: org.something:something-else-for-frontend
+    labels:
+      - "dependencies"

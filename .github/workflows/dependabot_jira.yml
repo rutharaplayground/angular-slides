@@ -10,9 +10,9 @@ on:
 env:
   JIRA_BASE_URL: https://karthiksksamy.atlassian.net/
   JIRA_USER_EMAIL: karthiksksamy@gmail.com
-  JIRA_API_TOKEN: ATATT3xFfGF0r8KA3kJ649vE_nwKBua4m_Lw4iokZmdD2RWzqgfjToehz1OyE3v48lvbBNWHZbVvQN84VBvBEdlyzILeaD3uYXr5a5UcfUdP77RyL5mU7IKpXkaAZv_0LHCtXDV6IjRFcn6Ayt2BItkAcMX_mrE6EsDa--V54MdnMx55W6Tv9z8=11927BB5
+  JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
   JIRA_PROJECT: KAN
-  JIRA_ISSUE_TYPE: Story
+  JIRA_ISSUE_TYPE: Task
 
 jobs:
   create_jira:
