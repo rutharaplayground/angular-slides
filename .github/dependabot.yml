@@ -14,9 +14,9 @@ updates:
         applies-to: version-updates
         patterns:
         - "*"
-      # minor-and-patch:
-      #   applies-to: security-updates
-      #   patterns:
-      #   - "*"
+      security-updates:
+        applies-to: security-updates
+        patterns:
+        - "*"
     reviewers:
       - "karthiksksamy@gmail.com"
