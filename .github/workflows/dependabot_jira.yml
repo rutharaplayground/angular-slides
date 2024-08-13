@@ -31,9 +31,17 @@ jobs:
       id: create
       uses: atlassian/gajira-create@v2.0.1
       with:
-        project: ${{ env.JIRA_PROJECT }}
-        issuetype: ${{ env.JIRA_ISSUE_TYPE }}
+        project: ${{env.JIRA_PROJECT}}
+        issuetype: ${{env.JIRA_ISSUE_TYPE}}
         summary: |
-          [${{github.event.repository.name }}] ${{github.event.pull_request.title }}
+          [${{ steps.cpr.outputs.pull-request-branch }}] [${{ steps.cpr.outputs.pull-request-title }}]
         description: |
-          ${{github.event.pull_request.html_url }}
+          ${{ steps.cpr.outputs.pull-request-url }}
+        fields: '{"labels": ["dependabot", "package", "updates"], "epic": "KAN-1", "priority": "Medium"}'
+
+    - name: Update PR Title with Jira Issue
+      run: |
+        NEW_TITLE="${{ steps.create.outputs.issue }} - [${{ steps.cpr.outputs.pull-request-branch }}] [${{ steps.cpr.outputs.pull-request-title }}]"
+        gh pr edit ${{ steps.cpr.outputs.pull-request-number }} --title "$NEW_TITLE" --body "test"
+      env:
+      GITHUB_TOKEN: ${{ secrets.DEPENDABOT_GITHUB_TOKEN}}
