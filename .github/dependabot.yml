@@ -18,5 +18,8 @@ updates:
         applies-to: security-updates
         patterns:
         - "*"
+        update-types:
+        - "patch"
+        - "minor"
     reviewers:
       - "karthiksksamy@gmail.com"
