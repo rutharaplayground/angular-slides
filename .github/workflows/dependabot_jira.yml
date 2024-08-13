@@ -37,7 +37,7 @@ jobs:
           [${{ steps.cpr.outputs.pull-request-branch }}] [${{ steps.cpr.outputs.pull-request-title }}]
         description: |
           ${{ steps.cpr.outputs.pull-request-url }}
-        fields: '{"labels": ["dependabot", "package", "updates"], "epic": "KAN-1", "priority": "Medium"}'
+        fields: '{"labels": ["dependabot", "package", "updates"], "parent": "KAN-77", "priority": "Medium"}'
 
     - name: Update PR Title with Jira Issue
       run: |
