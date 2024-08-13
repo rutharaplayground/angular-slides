@@ -10,10 +10,6 @@ updates:
     schedule:
       interval: "weekly"
     groups:
-      version-updates:
-        applies-to: version-updates
-        patterns:
-        - "*"
       security-updates:
         applies-to: security-updates
         patterns:
@@ -21,5 +17,9 @@ updates:
         update-types:
         - "patch"
         - "minor"
+      version-updates:
+        applies-to: version-updates
+        patterns:
+        - "*"
     reviewers:
       - "karthiksksamy@gmail.com"
