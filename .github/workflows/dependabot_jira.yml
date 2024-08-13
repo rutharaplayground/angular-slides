@@ -45,7 +45,7 @@ jobs:
 
     - name: Update PR Title with Jira Issue
       run: |
-        NEW_TITLE="${{ steps.create.outputs.issue }} - ${{github.event.repository.name }}] ${{github.event.pull_request.title }}"
+        NEW_TITLE="${{ steps.create.outputs.issue }} - [${{github.event.repository.name }}] ${{github.event.pull_request.title }}"
         gh pr edit ${{ github.event.pull_request.number }} --title "$NEW_TITLE" --body "test"
       env:
         GITHUB_TOKEN: ${{ secrets.DEPENDABOT_GITHUB_TOKEN}}
