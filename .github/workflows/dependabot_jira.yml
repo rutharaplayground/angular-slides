@@ -20,6 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     # if: github.event.pull_request.user.id == 27856297 #id dependabot user
     steps:
+
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
     - name: Login to Jira
       uses: atlassian/gajira-login@v2.0.0
       env:
@@ -34,14 +38,14 @@ jobs:
         project: ${{env.JIRA_PROJECT}}
         issuetype: ${{env.JIRA_ISSUE_TYPE}}
         summary: |
-          [${{ steps.cpr.outputs.pull-request-branch }}] [${{ steps.cpr.outputs.pull-request-title }}]
+          [${{github.event.repository.name }}] ${{github.event.pull_request.title }}
         description: |
-          ${{ steps.cpr.outputs.pull-request-url }}
+          ${{github.event.pull_request.html_url }}
         fields: '{"labels": ["dependabot", "package", "updates"], "parent": {"key":"KAN-77"}, "priority": {"name": "Medium"}}'
 
     - name: Update PR Title with Jira Issue
       run: |
-        NEW_TITLE="${{ steps.create.outputs.issue }} - [${{ steps.cpr.outputs.pull-request-branch }}] [${{ steps.cpr.outputs.pull-request-title }}]"
-        gh pr edit ${{ steps.cpr.outputs.pull-request-number }} --title "$NEW_TITLE" --body "test"
+        NEW_TITLE="${{ steps.create.outputs.issue }} - ${{github.event.repository.name }}] ${{github.event.pull_request.title }}"
+        gh pr edit ${{ github.event.pull_request.number }} --title "$NEW_TITLE" --body "test"
       env:
         GITHUB_TOKEN: ${{ secrets.DEPENDABOT_GITHUB_TOKEN}}
